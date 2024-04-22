@@ -12,10 +12,10 @@ namespace _5T24_LoukaConstant_adresseIP
         {
             int i;
             int octetAdresse = 4;
-            
+
             for (i = 0; i <= octetAdresse - 1; i++)
             {
-               LireOctet(out adresseIP[i]);
+                LireOctet(out adresseIP[i]);
             }
         }
 
@@ -33,17 +33,17 @@ namespace _5T24_LoukaConstant_adresseIP
 
                 else
                 {
-                    Console.WriteLine("Votre nombre n'est pas compris entre 0 et 255 ! Recommencez !");
+                    Console.WriteLine("Votre nombre n'est pas compris entre 0 et 255 ! Veuillez recommencer !");
                 }
             }
 
             return check;
         }
 
-        public bool ajouteAdresseIP(ref int[,] matriceAdresse, ref int[] adresseIP,ref int place)
+        public bool ajouteAdresseIP(ref int[,] matriceAdresse, ref int[] adresseIP, ref int place)
         {
             place = 20;
-           bool addAdresseIP = true;
+            bool addAdresseIP = true;
             int i;
 
             if (place <= 20)
@@ -63,48 +63,74 @@ namespace _5T24_LoukaConstant_adresseIP
         }
 
         public bool ajouteNom(ref int place, string[] tableauNoms)
-        {  
+        {
             bool addNom = false;
 
             if (place != tableauNoms.GetLength(place))
             {
-                tableauNoms[place]= lireString("Quelle est le nom que vous voulez entrer ?");
-                addNom = true; 
+                tableauNoms[place] = lireString("Quelle est le nom que vous voulez entrer ?");
+                addNom = true;
             }
             return addNom;
         }
 
-        /*
-        public string concateneAdresse(int[] adresseIP)
+
+        //public string concateneAdresse(int[] adresseIP)
+        //{
+        //    string message = "";
+        //    int i;
+
+        //    for (i = 0; i <= adresseIP.Length - 1; i++)
+        //    {
+        //        message += adresseIP[i];
+
+        //        if (i < adresseIP.Length - 1)
+        //        {
+        //            message += ".";
+        //        } 
+        //    }
+        //    return message;
+        //}
+
+        public string ConcateneAdresse(int[,] tabAdresses, int ligne)
         {
             string message = "";
-            int i;
-
-            for (i = 0; i <= adresseIP.Length - 1; i++)
+            for (int i = 0; i <= tabAdresses.Length - 1; i++)
             {
-                message += adresseIP[i];
+                message += tabAdresses[ligne, i];
 
-                if (i <= adresseIP.Length - 1)
+                if (i < tabAdresses.Length - 1)
                 {
                     message += ".";
                 }
-                return message;
-            }
-        }
-        */
-        /*
-        public void concateneTout(string[] tableauNoms)
-        {
-            int i;
-            string message = "";
-            int addAdresse = 0;
-            for (i = 0; i < addAdresse ; i++)
-            {
-                message = tableauNoms[i] + concateneAdresse + "\n";
             }
             return message;
         }
-        */
+        public string ConcateneTout(int[,] tabAdresses, string[] tabNoms, int nbNoms)
+        {
+            string message = "";
+            for (int i = 0; i < nbNoms; i++)
+            {
+                message += tabNoms[i] + " : " + ConcateneAdresse(tabAdresses, i);
+                if (i != nbNoms)
+                {
+                    message += "\n";
+                }
+            }
+            return message;
+        }
+        //public string concateneTout(string[] tableauNoms)
+        //{
+        //    int i;
+        //    string message = "";
+        //    int addAdresse = 0;
+        //    for (i = 0; i < addAdresse ; i++)
+        //    {
+        //        message = tableauNoms[i] + concateneAdresse + "\n";
+        //    }
+        //    return message;
+        //}
+
         public string lireString(string question)
         {
             string rep;
