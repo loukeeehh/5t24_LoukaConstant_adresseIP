@@ -8,18 +8,18 @@ namespace _5T24_LoukaConstant_adresseIP
 {
     public struct fctProcedure
     {
-        public void LireAdresseIP(int[] adresseIP)
+        public void LireAdresseIP(out int[] adresseIP)
         {
             int i;
             int octetAdresse = 4;
-
+            adresseIP = new int[octetAdresse];
             for (i = 0; i <= octetAdresse - 1; i++)
             {
                 LireOctet(out adresseIP[i]);
             }
         }
 
-        public bool LireOctet(out int nUser)
+        public bool LireOctet(out int nUser) //outil
         {
             bool check = false;
             nUser = 0;
@@ -42,7 +42,7 @@ namespace _5T24_LoukaConstant_adresseIP
 
         public bool ajouteAdresseIP(ref int[,] matriceAdresse, ref int[] adresseIP, ref int place)
         {
-            place = 20;
+            place = 0;
             bool addAdresseIP = true;
             int i;
 
@@ -52,6 +52,7 @@ namespace _5T24_LoukaConstant_adresseIP
                 {
                     matriceAdresse[place, i] = adresseIP[i];
                 }
+                place += 1;
             }
 
             else
@@ -62,14 +63,15 @@ namespace _5T24_LoukaConstant_adresseIP
             return addAdresseIP;
         }
 
-        public bool ajouteNom(ref int place, string[] tableauNoms)
+        public bool ajouteNom(ref int place, ref string[] tableauNoms)
         {
             bool addNom = false;
 
-            if (place != tableauNoms.GetLength(place))
+            if (place != tableauNoms.Length)
             {
                 tableauNoms[place] = lireString("Quelle est le nom que vous voulez entrer ?");
                 addNom = true;
+                place++;
             }
             return addNom;
         }
@@ -92,14 +94,14 @@ namespace _5T24_LoukaConstant_adresseIP
         //    return message;
         //}
 
-        public string ConcateneAdresse(int[,] tabAdresses, int ligne)
+        public string ConcateneAdresse(int[,] tabAdresses, int ligne) //outil
         {
             string message = "";
-            for (int i = 0; i <= tabAdresses.Length - 1; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 message += tabAdresses[ligne, i];
 
-                if (i < tabAdresses.Length - 1)
+                if (i < 3)
                 {
                     message += ".";
                 }

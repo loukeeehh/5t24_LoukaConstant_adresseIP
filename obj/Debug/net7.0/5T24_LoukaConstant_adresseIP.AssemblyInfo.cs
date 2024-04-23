@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("5T24_LoukaConstant_adresseIP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2aeba605b834a9e5c068126ac56936db21c02a72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+31e2a4815798b03c46f139a768cafceea236cb3f")]
 [assembly: System.Reflection.AssemblyProductAttribute("5T24_LoukaConstant_adresseIP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("5T24_LoukaConstant_adresseIP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
