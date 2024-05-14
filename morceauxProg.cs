@@ -40,18 +40,21 @@ namespace _5T24_LoukaConstant_adresseIP
             return check;
         }
 
-        public bool ajouteAdresseIP(ref int[,] matriceAdresse, ref int[] adresseIP, ref int place)
+        public bool ajouteAdresseIP(ref Adresse[] totalAdresseIP, ref int[] adresse, ref int place, string nom)
         {
             place = 0;
             bool addAdresseIP = true;
             int i;
 
-            if (place <= 20)
+            if (place < totalAdresseIP.Length)
             {
-                for (i = 0; i <= 3; i++)
+                totalAdresseIP[place].nom = nom;
+
+                for (i = 0; i < 4; i++)
                 {
-                    matriceAdresse[place, i] = adresseIP[i];
+                    totalAdresseIP[place].adresseIP[i] = adresse[i];
                 }
+
                 place += 1;
             }
 
@@ -94,12 +97,12 @@ namespace _5T24_LoukaConstant_adresseIP
         //    return message;
         //}
 
-        public string ConcateneAdresse(int[,] tabAdresses, int ligne) //outil
+        public string ConcateneAdresse(Adresse[] totalAdressesIP, int ligne) //outil
         {
             string message = "";
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i < 4; i++)
             {
-                message += tabAdresses[ligne, i];
+                message += totalAdressesIP[ligne].adresseIP[i];
 
                 if (i < 3)
                 {
@@ -108,12 +111,12 @@ namespace _5T24_LoukaConstant_adresseIP
             }
             return message;
         }
-        public string ConcateneTout(int[,] tabAdresses, string[] tabNoms, int nbNoms)
+        public string ConcateneTout(Adresse[] totalAdressesIP, int nbNoms) //adresse[] tabAdresse
         {
             string message = "";
             for (int i = 0; i < nbNoms; i++)
             {
-                message += tabNoms[i] + " : " + ConcateneAdresse(tabAdresses, i);
+                message += totalAdressesIP[i].nom + " : " + ConcateneAdresse(totalAdressesIP, i);
                 if (i != nbNoms)
                 {
                     message += "\n";

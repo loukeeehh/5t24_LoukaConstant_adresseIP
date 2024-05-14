@@ -8,10 +8,15 @@ namespace _5T24_LoukaConstant_adresseIP
         {
             Console.WriteLine("Tableau de noms et d'adresses IP");
             int[] adresseIP;
-            string[] tableauNoms = new string [20];
-            int[,] MatriceAdresses = new int [20, 4]; 
-            int addNoms = 0; //compteur pour noms ajoutés
-            int places = 0;
+            Adresse[] totalAdressesIP = new Adresse[20]; 
+
+            for (int i = 0; i < 20; i++)
+            {
+                totalAdressesIP[i] = new Adresse();
+            }
+
+            int places = 0; //compteur pour adresse ajoutées
+            string nom = "";
             bool fini = false;
             string nUser;
             string message;
@@ -19,19 +24,13 @@ namespace _5T24_LoukaConstant_adresseIP
 
             do
             {
+                Console.WriteLine("Entrez un nom :");
+                nom = Console.ReadLine();
 
-                if (!morceauxProg.ajouteNom(ref addNoms, ref tableauNoms))
-                    {
-                    Console.WriteLine("On ne peut plus prendre plus de données !");
-                    fini = true;
-                }
-
-                else
-                {
-                    Console.WriteLine("Encodez l'adresseIP :");
-                    morceauxProg.LireAdresseIP(out adresseIP);
-                    morceauxProg.ajouteAdresseIP(ref MatriceAdresses, ref adresseIP, ref places);
-                }
+                Console.WriteLine("Encodez l'adresseIP :");
+                morceauxProg.LireAdresseIP(out adresseIP);
+                morceauxProg.ajouteAdresseIP(ref totalAdressesIP, ref adresseIP, ref places, nom);
+                
           
                 Console.WriteLine("\n Voulez - vous encoder un autre adresse ? 'o' = oui, 'n' = non");
                 nUser = Console.ReadLine();
@@ -44,7 +43,7 @@ namespace _5T24_LoukaConstant_adresseIP
          
             
                 Console.WriteLine("Voici les adresses encodées :");
-                Console.WriteLine(morceauxProg.ConcateneTout(MatriceAdresses, tableauNoms, addNoms));
+                Console.WriteLine(morceauxProg.ConcateneTout(totalAdressesIP,places));
             
         }
     }
